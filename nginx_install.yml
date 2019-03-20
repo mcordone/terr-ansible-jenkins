@@ -1,0 +1,13 @@
+- hosts: appsvrs
+  tasks:
+    - name: Install NGINX
+      apt:
+        pkg: nginx
+        state: present
+        update_cache: true
+      become: true
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+      become: true

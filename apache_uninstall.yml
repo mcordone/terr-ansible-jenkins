@@ -1,0 +1,14 @@
+
+- hosts: appsvrs
+  tasks:
+    - name: uninstall apache
+      apt:
+        pkg: apache2
+        state: absent
+        update_cache: true
+      become: true
+    - name: stop apache
+      service:
+        name: apache2
+        state: stopped
+      become: true
